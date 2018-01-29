@@ -10,12 +10,21 @@ import UIKit
 
 class AnimationView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let circle = CircleLayer()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = UIColor.clear
+        addCircleLayer()
     }
-    */
-
+    
+    func addCircleLayer() {
+        self.layer.addSublayer(circle)
+        circle.expand()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
