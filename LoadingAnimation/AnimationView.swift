@@ -18,27 +18,44 @@ class AnimationView: UIView {
         backgroundColor = UIColor.clear
         addCircleLayer()
     }
-    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func addCircleLayer() {
         self.layer.addSublayer(circle)
+        // 圆从小变大动画
         circle.expand()
         Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(wobbleCircleLayer), userInfo: nil, repeats: false)
         
     }
     
+    // 圆型弹动动画
     @objc func wobbleCircleLayer(){
         circle.wobbleAnimate()
         layer.addSublayer(triangle)
         Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(showTriangleAnimation), userInfo: nil, repeats: false)
     }
     
+    // 三角动画
     @objc func showTriangleAnimation() {
         triangle.triangleAnimation()
+        Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(transformAnima), userInfo: nil, repeats: false)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func transformAnima() {
+        transformRotationZ()
     }
+
+    func transformRotationZ() {
+        self.layer.anchorPoint = CGPoint(x: 0.5, y: 0.65)
+        let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = CGFloat(M_PI * 2)
+        rotationAnimation.duration = 0.45
+        rotationAnimation.isRemovedOnCompletion = true
+        layer.add(rotationAnimation, forKey: nil)
+    }
+
+    
     
 }
