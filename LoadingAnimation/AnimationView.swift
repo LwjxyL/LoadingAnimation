@@ -11,6 +11,7 @@ import UIKit
 class AnimationView: UIView {
 
     let circle = CircleLayer()
+    let triangle = TriangleLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +29,12 @@ class AnimationView: UIView {
     
     @objc func wobbleCircleLayer(){
         circle.wobbleAnimate()
+        layer.addSublayer(triangle)
+        Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(showTriangleAnimation), userInfo: nil, repeats: false)
+    }
+    
+    @objc func showTriangleAnimation() {
+        triangle.triangleAnimation()
     }
     
     required init?(coder aDecoder: NSCoder) {
