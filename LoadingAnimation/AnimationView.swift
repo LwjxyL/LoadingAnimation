@@ -18,9 +18,16 @@ class AnimationView: UIView {
         addCircleLayer()
     }
     
+    
     func addCircleLayer() {
         self.layer.addSublayer(circle)
         circle.expand()
+        Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(wobbleCircleLayer), userInfo: nil, repeats: false)
+        
+    }
+    
+    @objc func wobbleCircleLayer(){
+        circle.wobbleAnimate()
     }
     
     required init?(coder aDecoder: NSCoder) {
