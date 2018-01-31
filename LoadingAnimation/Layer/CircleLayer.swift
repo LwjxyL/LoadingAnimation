@@ -32,6 +32,9 @@ class CircleLayer: CAShapeLayer {
         self.fillColor = UIColor.colorWithHexString(hex: "#da70d6").cgColor
         self.path = circleSmallPath.cgPath
     }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func wobbleAnimate() {
         let animation1: CABasicAnimation = CABasicAnimation(keyPath: "path")
@@ -66,7 +69,6 @@ class CircleLayer: CAShapeLayer {
     }
     
     func expand(){
-
         let expandAnimation: CABasicAnimation = CABasicAnimation(keyPath: "path")
         expandAnimation.fromValue = circleSmallPath.cgPath
         expandAnimation.toValue = circleBigPath.cgPath
@@ -76,7 +78,14 @@ class CircleLayer: CAShapeLayer {
         self.add(expandAnimation, forKey: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func contract(){
+        let contractAnimation: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        contractAnimation.fromValue = circleBigPath.cgPath
+        contractAnimation.toValue = circleSmallPath.cgPath
+        contractAnimation.duration = YAnimationDuration
+        contractAnimation.fillMode = kCAFillModeForwards
+        contractAnimation.isRemovedOnCompletion = false
+        self.add(contractAnimation, forKey: nil)
     }
+    
 }

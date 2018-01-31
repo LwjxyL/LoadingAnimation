@@ -13,6 +13,7 @@
 		AE1F202C20182819008C352C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1F202B20182819008C352C /* Assets.xcassets */; };
 		AE1F202F20182819008C352C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F202D20182819008C352C /* LaunchScreen.storyboard */; };
 		AE1F203720182D8D008C352C /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F203620182D8D008C352C /* AnimationView.swift */; };
+		AEDB01A22021AE58009B54AD /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDB01A12021AE58009B54AD /* RectangleLayer.swift */; };
 		AEE03151201EF9A300AB1C2C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE03150201EF9A300AB1C2C /* Extension.swift */; };
 		AEE0315420204ACE00AB1C2C /* CircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE0315320204ACE00AB1C2C /* CircleLayer.swift */; };
 		AEE0315620204AE400AB1C2C /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE0315520204AE400AB1C2C /* TriangleLayer.swift */; };
@@ -27,6 +28,7 @@
 		AE1F202E20182819008C352C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE1F203020182819008C352C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE1F203620182D8D008C352C /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		AEDB01A12021AE58009B54AD /* RectangleLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = "<group>"; };
 		AEE03150201EF9A300AB1C2C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		AEE0315320204ACE00AB1C2C /* CircleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLayer.swift; sourceTree = "<group>"; };
 		AEE0315520204AE400AB1C2C /* TriangleLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				AEE0315320204ACE00AB1C2C /* CircleLayer.swift */,
 				AEE0315520204AE400AB1C2C /* TriangleLayer.swift */,
+				AEDB01A12021AE58009B54AD /* RectangleLayer.swift */,
 			);
 			path = Layer;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			files = (
 				AEE03151201EF9A300AB1C2C /* Extension.swift in Sources */,
 				AE1F203720182D8D008C352C /* AnimationView.swift in Sources */,
+				AEDB01A22021AE58009B54AD /* RectangleLayer.swift in Sources */,
 				AE1F202720182819008C352C /* ViewController.swift in Sources */,
 				AEE0315620204AE400AB1C2C /* TriangleLayer.swift in Sources */,
 				AEE0315420204ACE00AB1C2C /* CircleLayer.swift in Sources */,

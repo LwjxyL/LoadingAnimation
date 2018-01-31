@@ -12,6 +12,8 @@ class AnimationView: UIView {
 
     let circle = CircleLayer()
     let triangle = TriangleLayer()
+    let redRectangle = RectangleLayer()
+    let blueRectangle = RectangleLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +47,9 @@ class AnimationView: UIView {
     
     @objc func transformAnima() {
         transformRotationZ()
+        circle.contract()
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(drawRedRectangleAnimation), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.2, target: self, selector: #selector(drawBlueRectangleAnimation), userInfo: nil, repeats: false)
     }
 
     func transformRotationZ() {
@@ -56,6 +61,14 @@ class AnimationView: UIView {
         layer.add(rotationAnimation, forKey: nil)
     }
 
+    @objc func drawRedRectangleAnimation() {
+        layer.addSublayer(redRectangle)
+        redRectangle.strokeChangeWithColor(color: UIColor.colorWithHexString(hex: "#da70d6"))
+    }
     
+    @objc func drawBlueRectangleAnimation() {
+        layer.addSublayer(blueRectangle)
+        blueRectangle.strokeChangeWithColor(color: UIColor.colorWithHexString(hex: "#40e0b0"))
+    }
     
 }
