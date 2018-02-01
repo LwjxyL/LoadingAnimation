@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol AnimationViewDelegate: class {
+    func completeAnimation()
+}
+
+
 class AnimationView: UIView {
 
     let circle = CircleLayer()
@@ -15,6 +20,8 @@ class AnimationView: UIView {
     let redRectangle = RectangleLayer()
     let blueRectangle = RectangleLayer()
     let wave = WaveLayer()
+    var parentFrame: CGRect = CGRect.zero
+    weak var delegate: AnimationViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,6 +83,22 @@ class AnimationView: UIView {
     @objc func drawWaveAnimation() {
         layer.addSublayer(wave)
         wave.animate()
+        Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(expandView), userInfo: nil, repeats: false)
     }
     
+    @objc func expandView() {
+        backgroundColor = UIColor.colorWithHexString(hex: "#40e0b0")
+        frame = CGRect(x: frame.origin.x - blueRectangle.lineWidth,
+                       y: frame.origin.y - blueRectangle.lineWidth,
+                       width: frame.size.width + blueRectangle.lineWidth * 2,
+                       height: frame.size.height + blueRectangle.lineWidth * 2)
+        layer.sublayers = nil
+        
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.frame = self.parentFrame
+        }, completion: { finished in
+            self.delegate?.completeAnimation()
+        })
+        
+    }
 }
