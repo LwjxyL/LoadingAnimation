@@ -14,6 +14,7 @@ class AnimationView: UIView {
     let triangle = TriangleLayer()
     let redRectangle = RectangleLayer()
     let blueRectangle = RectangleLayer()
+    let wave = WaveLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,6 +70,12 @@ class AnimationView: UIView {
     @objc func drawBlueRectangleAnimation() {
         layer.addSublayer(blueRectangle)
         blueRectangle.strokeChangeWithColor(color: UIColor.colorWithHexString(hex: "#40e0b0"))
+        Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(drawWaveAnimation), userInfo: nil, repeats: false)
+    }
+    
+    @objc func drawWaveAnimation() {
+        layer.addSublayer(wave)
+        wave.animate()
     }
     
 }
